@@ -1,0 +1,31 @@
+{{- if .Values.virtualservice.enabled -}}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: podinfo-vs
+  namespace: demo
+spec:
+  gateways:
+  - podinfo-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /podinfo
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: podinfo
+        port:
+          number: 9898
+  - match:
+    - uri:
+        prefix: /api/info
+    route:
+    - destination:
+        host: podinfo
+        port:
+          number: 9898
+{{- end }}
