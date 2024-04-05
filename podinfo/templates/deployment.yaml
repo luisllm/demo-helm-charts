@@ -98,7 +98,7 @@ spec:
             {{- end }}
           env:
           - name: PODINFO_UI_MESSAGE
-            value: "bye bye"
+            value: "hello"
           {{- if .Values.ui.logo }}
           - name: PODINFO_UI_LOGO
             value: {{ .Values.ui.logo }}
