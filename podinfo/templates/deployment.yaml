@@ -97,10 +97,8 @@ spec:
               {{- toYaml . | nindent 12 }}
             {{- end }}
           env:
-          {{- if .Values.ui.message }}
           - name: PODINFO_UI_MESSAGE
-            value: {{ quote .Values.ui.message }}
-          {{- end }}
+            value: "hola"
           {{- if .Values.ui.logo }}
           - name: PODINFO_UI_LOGO
             value: {{ .Values.ui.logo }}
